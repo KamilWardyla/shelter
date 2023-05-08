@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Wszystkie zwierzęta {% endblock %}</h1>
+{% if animals|length > 0 %}
+<table id="animals">
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Kategoria</th>
+        <th>Rasa</th>
+        <th>Operations</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for animal in animals %}
+    <tr>
+        <td>{{animal.name}}</td>
+        <td>{{animal.category}}</td>
+        <td>{{animal.race}}</td>
+        <td>
+            <button style="background: deepskyblue" onClick="location.href ='{{url_for('get_animal', id=animal.id)}}'">Szczegóły</button>
+            <button style="background: palegoldenrod" onClick="location.href ='{{url_for('edit', id=animal.id)}}'">Edytuj</button>
+            <button style="background: #d64161" onClick="location.href ='{{url_for('delete', id=animal.id)}}'">Wypisz</button>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div>Nie ma aktualnie żadnych zwierząt</div>
+{% endif %}
+<button style="background: dodgerblue" onClick="location.href ='{{url_for('add_animal')}}'">Dodaj</button>
+{% endblock %}

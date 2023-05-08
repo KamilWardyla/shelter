@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Wypisz ze schroniska {% endblock %}</h1>
+<form method="post" action="{{ url_for('delete', id=id) }}">
+    <input type="submit" value="Wypisz" onclick="return confirm(' Jesteś pewny, że chcesz wypisać zwierzę z schroniska?')">
+</form>
+{% endblock %}

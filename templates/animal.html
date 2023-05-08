@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Szczegóły {% endblock %}</h1>
+  <div>Nazwa: {{ animal.name }}</div>
+  <div>Kategoria: {{ animal.category }}</div>
+  <div>Rasa: {{animal.race}}</div>
+  <div>Data przyjęcia: {{animal.admisson_date}}</div>
+  <div>Opis: {{animal.description }}</div>
+  <button onClick="location.href ='{{url_for('edit', id=animal.id)}}'">Edytuj</button>
+  <button onClick="location.href ='{{url_for('delete', id=animal.id)}}'">Wypisz</button>
+{% endblock %}

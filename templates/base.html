@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: red;
+            background: dodgerblue;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content">
+    <nav>
+        <a href="{{url_for('home')}}">Strona Główna</a>
+        <a href="{{url_for('get_animals')}}">Wyświetl wszystkie zwierzęta</a>
+        <a href="{{url_for('add_animal')}}">Przyjmij do schroniska</a>
+    </nav>
+    {% block content %} {% endblock %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert">{{ message }}</div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
